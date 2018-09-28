@@ -1,18 +1,15 @@
-// Grab the articles as a json
 $.getJSON("/articles", function(data) {
-    // For each one
     for (var i = 0; i < data.length; i++) {
-      // Display the apropos information on the page
-      $("#articles").append("<div class = 'row'><div class = 'col-sm-8 align-self-center'><h2><a href='" + data[i].url + "'>" + data[i].headline + "</a></h2><p>" + data[i].summary + "</p></div><div class = 'col-sm-4'><img src = '"+ data[i].photoLink + "'></div></div></br>");
+      $("#articles").append("<div class = 'row'><div class = 'col-sm-8 align-self-center'><h2><a href='" + data[i].url + "'>" + data[i].headline + "</a></h2><p>" + data[i].summary + "</p><button id = 'notesBtn' data-toggle='modal' data-target = 'articleNotes' data-id = '" + data[i]._id + "'> Article Notes </button></div><div class = 'col-sm-4'><img src = '"+ data[i].photoLink + "'/></div></div></br>");
     }
   });
   
   
-  // Whenever someone clicks a p tag
-  $(document).on("click", "p", function() {
-    // Empty the notes from the note section
-    $("#notes").empty();
-    // Save the id from the p tag
+
+  $(document).on("click", "#notesBtn", function() {
+
+    $("#articleNotes").empty();
+   
     var thisId = $(this).attr("data-id");
   
     // Now make an ajax call for the Article
@@ -24,13 +21,14 @@ $.getJSON("/articles", function(data) {
       .then(function(data) {
         console.log(data);
         // The title of the article
-        $("#notes").append("<h2>" + data.title + "</h2>");
+        $("#articleName").append("<h2>" + data.headline + "</h2>");
+        $("#articlePhoto").append("<img src = '"+ data.photoLink + "'/>");
         // An input to enter a new title
         $("#notes").append("<input id='titleinput' name='title' >");
         // A textarea to add a new note body
         $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
-        $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+        $(".modal-footer").append("<button data-id='" + data._id + "' id='savenote' data-dismiss='modal'>Save Note</button>");
   
         // If there's a note in the article
         if (data.note) {

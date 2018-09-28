@@ -1,54 +1,86 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="UTF-8">
-    <title>Mongo Scraper</title>
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/lux/bootstrap.min.css">
-    <style>
-      body { background-color: lightgray }
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mongo Scraper</title>
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootswatch/4.1.3/lux/bootstrap.min.css">
+  <style>
+    body {
+      background-color: lightgray
+    }
 
 
 
-      #images {
-          float: right;
-      }
+    #images {
+      float: right;
+    }
 
-      img {
-          width: 100%;
+    img {
+      width: 100%;
 
-      }
-      #notes {
-        float: right;
-        width: 30%;
-      }
-      textarea, input {
-        display: block;
-        width: 100%;
-        background-color: #FCF5C7;
-      }
-      input {
-        height: 36px;
-        font-size: 24px;
-      }
-      textarea {
-        height: 200px;
-        font-size: 18px;
-      }
-    </style>
-  </head>
-  <body>
+    }
 
-        <div class="jumbotron jumbotron-fluid">
-          <div class="container">
-            <h1 class="display-4">Mongo Scraper</h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-          </div>
+    #notes {
+      float: right;
+      width: 30%;
+    }
+
+    textarea,
+    input {
+      display: block;
+      width: 100%;
+      background-color: #FCF5C7;
+    }
+
+    input {
+      height: 36px;
+      font-size: 24px;
+    }
+
+    textarea {
+      height: 200px;
+      font-size: 18px;
+    }
+
+    #notesBtn {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Mongo Scraper</h1>
+      <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+  </div>
+
+  <div id="articles" class="container">
+  </div>
+  <div class="modal fade" id="articleNotes" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="articleName"></h5>
+        </div>
+        <div class="articlePhoto">
+        </div>
+        <div class="modal-body clearfix">
+
         </div>
 
-      <div id = "articles" class = "container">
+        <div class="modal-footer">
+          <button type="button" class="saveNote" data-dismiss="modal">Close</button>
         </div>
-      <div id="notes"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="app.js"></script>
-  </body>
+      </div>
+
+    </div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
 </html>
